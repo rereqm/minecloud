@@ -1,0 +1,17 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/delete.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="poppins">
+    <h1>Are you sure?</h1>
+    <a href="/api/delete_server/{{server.id}}"><div class="btn delete">Delete</div></a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

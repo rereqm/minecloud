@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href='{% static "css/error404.css" %}' rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <div class="error-text">
+        <h1>404</h1>
+        <p>Sorry, we were unable to find that page</p>
+        <a href="/"><div class="back-btn">Back to MainPage</div></a>
+    </div>
+    <div class="img-wrapper">
+        <img src='{% static "img/error404/img.png" %}'>
+    </div>
+</div>
+
+{% endblock %}

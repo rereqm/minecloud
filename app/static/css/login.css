@@ -1,0 +1,73 @@
+body{
+    background-color: #9FD5FF;
+}
+.content {
+    height: 500px;
+    width: 450px;
+    background-color: white;
+    border-radius: 30px;
+    margin-left: -500px;
+    margin-top: 100px;
+}
+.pig{
+    position: relative;
+    top: 400px;
+    left: 300px;
+}
+.wheat{
+    position: relative;
+    right: 350px;
+}
+.form{
+    height: 400px;
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.form h3{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+    padding-left: 2px;
+    border-radius: 5px;
+    height: 30px;
+    width: 270px;
+    border: 1px solid gray;
+    padding-left: 30px;
+}
+input[type="submit"]{
+    height: 40px;
+    width: 300px;
+    background-color: #008FFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.form-item{
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+.icon{
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 30px;
+    right: 135px;
+}
+.errorlist{
+  list-style-type: none;
+  text-align: left;
+  color: red;
+}

@@ -1,0 +1,186 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/console.css" %}' rel="stylesheet">
+<link href='{% static "css/settings.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="poppins settings">
+    <h1>Server settings</h1>
+    <form action="/api/edit_server/{{server.id}}" method="post" novalidate>
+        <!-- Bug fix -->
+        <input type="hidden" name="white_list" id="id_white_list" value="false">
+        <input type="hidden" name="online_mode" id="id_online_mode" value="false">
+        <input type="hidden" name="pvp" id="id_pvp" checked="" value="false">
+        <input type="hidden" name="allow_flight" id="id_allow_flight" checked="" value="false">
+        <input type="hidden" name="spawn_animals" id="id_spawn_animals" checked="" value="false">
+        <input type="hidden" name="spawn_monsters" id="id_spawn_monsters" checked="" value="false">
+        <input type="hidden" name="spawn_npcs" id="id_spawn_npcs" checked="" value="false">
+        <input type="hidden" name="allow_nether" id="id_allow_nether" checked="" value="false">
+        <input type="hidden" name="enable_command_block" id="id_enable_command_block" checked="" value="false">
+        <!-- Bug fix -->
+    {% csrf_token %}
+    <div class="column">
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.max_players.label}}</p>
+                {{form.max_players}}
+            </div>
+            <div class="form-item">
+                <p>{{form.gamemode.label}}</p>
+                {{form.gamemode}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.difficulty.label}}</p>
+                {{form.difficulty}}
+            </div>
+            <div class="form-item">
+                <p>{{form.white_list.label}}</p>
+                <label class="toggle-switch">
+                    {{form.white_list}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.online_mode.label}}</p>
+                <label class="toggle-switch">
+                    {{form.online_mode}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.pvp.label}}</p>
+                <label class="toggle-switch">
+                    {{form.pvp}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.allow_flight.label}}</p>
+                <label class="toggle-switch">
+                    {{form.allow_flight}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.spawn_animals.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_animals}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.spawn_monsters.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_monsters}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.spawn_npcs.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_npcs}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.allow_nether.label}}</p>
+                <label class="toggle-switch">
+                    {{form.allow_nether}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.enable_command_block.label}}</p>
+                <label class="toggle-switch">
+                    {{form.enable_command_block}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Save">
+    </form>
+</div>
+<div class="set_version poppins">
+    <h1>Select server type</h1>
+    <p>Selected type: <span id="type">{{type}}</span></p>
+    <p>*World will be delete</p>
+    <div class="row">
+        <div class="column">
+            <h2>Vanilla</h2>
+            <div class="row">
+                <button class="set_version_btn" type="button" onclick="change_version('1.19.4')">1.19.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.18.2')">1.18.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.17.1')">1.17.1</button>
+            </div>
+            <div class="row">
+                <button class="set_version_btn" type="button" onclick="change_version('1.16.5')">1.16.5</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.15.2')">1.15.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.14.4')">1.14.4</button>
+            </div>
+            <div class="row">
+                <button class="set_version_btn" type="button" onclick="change_version('1.13.2')">1.13.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.12.2')">1.12.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.11.2')">1.11.2</button>
+            </div>
+            <div class="row">
+                <button class="set_version_btn" type="button" onclick="change_version('1.10.2')">1.10.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.9.4')">1.9.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.8.9')">1.8.9</button>
+            </div>
+            <div class="row">
+                <button class="set_version_btn" type="button" onclick="change_version('1.7.10')">1.7.10</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.6.4')">1.6.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.5.2')">1.5.2</button>
+            </div>
+        </div>
+        <div class="column">
+            <h2>Modepacks</h2>
+            <div class="row">
+                <button class='modpack_btn' type="button" onclick="set_modpack('sevtech-ages')">sevtech-ages (1.12.2)</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = true;
+    }
+    function change_version(version) {
+        var http = new XMLHttpRequest();
+        let csrf = document.querySelectorAll('input[name="csrfmiddlewaretoken"]')[0].value;
+        type.innerHTML = 'vanilla '+version;
+        http.open("POST", "/api/edit_version/{{server.id}}", true);
+        http.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        http.send("version="+version+"&csrfmiddlewaretoken="+csrf);
+    }
+    function set_modpack(modpack) {
+        var http = new XMLHttpRequest();
+        let csrf = document.querySelectorAll('input[name="csrfmiddlewaretoken"]')[0].value;
+        type.innerHTML = 'modepack '+modpack;
+        http.open("POST", "/api/set_modpack/{{server.id}}", true);
+        http.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        http.send("modpack="+modpack+"&csrfmiddlewaretoken="+csrf);
+    }
+</script>
+{% endblock %}

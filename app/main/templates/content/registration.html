@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/registration.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="flex-container">
+    <div>
+        <img class="bee" height="200" width="auto" src='{% static "img/auth/bee.png" %}'>
+    </div>
+    <div class="content">
+        <div class="form">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h3 class="poppins">Registration</h3>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/user_icon.svg" %}'>
+                    {{form.first_name}}
+                </div>
+                <br>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/user_icon.svg" %}'>
+                    {{form.last_name}}
+                </div>
+                <br>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/user_icon.svg" %}'>
+                    {{form.username}}
+                </div>
+                <br>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/email.svg" %}'>
+                    {{form.email}}
+                </div>
+                <br>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/key.svg" %}'>
+                    {{form.password1}}
+                </div>
+                <br>
+                <div class="form-item">
+                    <img class="icon" src='{% static "img/auth/key.svg" %}'>
+                    {{form.password2}}
+                </div>
+                <br>
+                <input type="submit" value="Registration"><br>
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                {% if field.errors %}
+                {{field.errors}}
+                {% endif %}
+                {% endfor %}
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

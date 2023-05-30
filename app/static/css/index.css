@@ -1,0 +1,232 @@
+.background-parallax {
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.wrapper {
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+
+}
+
+.main-text {
+    font-size: 120px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.title {
+    font-size: 40px;
+}
+
+.authorization {
+    font-size: 30px;
+    display: flex;
+
+}
+
+.poppins {
+    font-family: 'Poppins';
+}
+
+.lilita-one {
+    font-family: 'Lilita One';
+}
+
+.play-btn {
+    width: 180px;
+    height: 75px;
+    background: #297CC2;
+    border-radius: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 30px;
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 60px; 
+    right: 60px;
+}
+
+.play-btn:hover {
+    background: rgba(41, 111, 160, 1);
+}
+
+.bg-sec {
+    background: #2D3943;
+    height: 600px;
+}
+
+.header-anim {
+    background: rgba(80, 106, 128, 0.9);
+
+}
+
+.article-title {
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+.about-us {
+    padding: 10px;
+
+}
+
+.about-block {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.images-about {
+    padding-left: 150px;
+    padding-top: 20px;
+    width: 500px;
+    height: 200px;
+    border: solid white;
+    border-width: 0.5px;
+}
+
+.about {
+    margin: 19px;
+    width: 461px;
+}
+
+h3 {
+    color: #2B87D3;
+}
+
+.bg-first {
+    background: #9FD5FF;
+}
+
+
+.rate {
+    display: flex;
+    width: 400px;
+    height: 500px;
+    margin: 100px;
+    background: rgba(41, 124, 194, 1);
+    border-radius: 10px;
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transition: 1.5s;
+    margin-right: 4%;
+    margin-left: 4%;
+}
+
+
+.rate-1 {
+    left: -1000px;
+}
+
+.rate-2 {
+    left: -1000px;
+}
+
+.rate-3 {
+    left: -1000px;
+}
+
+
+.rate-anim {
+    transition: 1.5s;
+    opacity: 1;
+    left: 0;
+    bottom: 0;
+}
+
+.rates {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.feature {
+    text-align: center;
+    width: 350px;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.sub-des {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins';
+    font-size: 18px;
+    padding: 2px;
+}
+
+.sub-des > img {
+    position: relative;
+    top: 5px;
+    left: -7px;
+}
+
+
+h4 {
+    font-size: 35px;
+}
+
+header .menu{
+    margin-top: 0px;
+    position: relative;
+    right: 50px;
+}
+header .menu-auth{
+    margin-top: 0px;
+    position: relative;
+    left: 55px;
+}
+header .auth{
+    margin-top: 0px;
+}
+header .logo{
+    margin-top: 30px
+}
+header .logo img{
+    margin-top: -31px;
+}
+#logo_img{
+    margin-top: -31px;
+}
+#logout{
+    margin-top: -20px;
+}
+#logout_img{
+    margin-top: -35px;
+}
+#money{
+    margin-top: -21px;
+}
+header .logo p{
+    margin-top: 0px
+}

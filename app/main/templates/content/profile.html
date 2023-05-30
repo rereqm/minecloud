@@ -1,0 +1,87 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container text-center poppins">
+      <h3>Settings</h3>
+      <div class="row">
+            <form action="{% url 'edit username' %}" method="post" class="col profile-block one-line">
+                  {% csrf_token %}
+                  <div style="width: 324px; margin: 0px auto;">
+                        <h3>Username</h3>
+                        {{username_change_form.username}}<br>
+                        <div class="btn-box">
+                        <input type="submit" class='profile-button' value="Change username">
+                        </div>
+                  </div>
+            </form>
+            <form action="{% url 'edit email' %}" method="post" class="col profile-block one-line">
+                  {% csrf_token %}
+                  <div style="width: 324px; margin: 0px auto;">
+                        <h3>E-mail</h3>
+                        {{email_change_form.email}}<br>
+                        <div class="btn-box">
+                        <input type="submit" class='profile-button' value="Change email">
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="row">
+            <form action="{% url 'edit password' %}" method="post" class="col profile-block two-lines">
+                  {% csrf_token %}
+                  <h3>Password</h3>
+                  <div style="width: 324px; margin: 0px auto">
+                        <h6>Old password</h6>
+                        {{password_change_from.old_password}}
+                        <h6>New password</h6>
+                        {{password_change_from.new_password1}}
+                        <h6>Repeat password</h6>
+                        {{password_change_from.new_password2}}<br>
+                        <div class="btn-box">
+                        <input style='margin-top: 39px;' type="submit" class='profile-button' value="Change password">
+                        </div>      
+                  </div>
+            </form>
+            <form action="{% url 'edit logo'%}" method="post" class="col profile-block two-lines" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <h3>Logo</h3>
+                  <div style="width: 324px; margin: 0px auto">
+                        <img src="/media/{{request.user.logo_image}}" style="width: 125px; height: 125px;">
+                        {{logo_change_form.logo_image}}<br>
+                        <div class="btn-box">
+                              <input type="submit" class='profile-button' value="Change logo">
+                        </div>      
+                  </div>
+            </form>
+      </div>
+      <div class="row payment">
+            <form action="{% url 'create payment' %}" method="post">
+                  {% csrf_token %}
+                  <div>
+                        <h3>Payment</h3>
+                        <input type="number" name="amount">₽<br>
+                        <div class="btn-box">
+                        <input style="width:100px; margin-left:-20px;" type="submit" class='profile-button' value="Pay">
+                        </div>
+                  </div>
+            </form>
+      </div>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li
+        {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/console.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="console-img">
+    <div class="console-text">
+        <!-- сюда писать текст -->
+    </div>
+</div>
+<div class="ip">
+    <p>Server IP: {{SERVER_IP}}:{{SERVER_PORT}}</p>
+</div>
+<div class="command-line">
+    <div class="input-line">
+        <input class="command" type="text" id="command" name="command">
+    </div>
+    <div class="button">
+        <button id="send" onclick="send_command()">
+            Send
+        </button>
+    </div>
+</div>
+<div class="bottom-panel">
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="restart()">Restart</button>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    command.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            send.click();
+        }
+    });
+    let ws_log = new WebSocket("wss://{{WEBSOCKET}}/ws/log/{{server.docker_id}}")
+    ws_log.onmessage = function(event){
+        let log_data = event.data;
+        let objDiv = document.querySelector('.console-text');
+        if (objDiv.innerHTML != log_data) {
+            objDiv.innerHTML = log_data;
+            scroll_to_bottom();
+        }else{
+            objDiv.innerHTML = log_data;
+        }
+    }
+    function scroll_to_bottom() {
+        let objDiv = document.querySelector('.console-text');
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+    function send_command() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/run_command/{{server.id}}?command='+command.value)
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+        command.value = ''
+    }
+    function start() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/start_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+    function restart() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/restart_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+    function stop() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/stop_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+</script>
+{% endblock %}

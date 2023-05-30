@@ -1,0 +1,58 @@
+main{
+    background-color: #506a80;
+    padding: 50px;
+}
+.world{
+    background-color: #2d3943;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+}
+.world h3{
+    color: #fff;
+}
+.img{
+    height: 100px;
+    width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn{
+    height: 24px;
+    width: 85px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+.delete{
+    background-color: red;
+}
+.download{
+    background-color: #1fd78d;
+}
+.buttons{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+@media(max-width: 600px){
+    .world{
+        display: block;
+    }
+    .buttons{
+        display: flex;
+        margin: 0;
+    }
+    .btn{
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .world{
+        height: 150px;
+        width: 210px;
+    }
+}

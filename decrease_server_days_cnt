@@ -1,0 +1,1 @@
+0 0 * * * POSTGRES_DB=postgres POSTGRES_USER=postgres POSTGRES_PASSWORD=d6f001d70d6b44607ec60f5e4f3870b9 /usr/local/bin/python3 /app/manage.py shell < /app/decrease_days_cnt.py >> /var/log/cron.log 2>&1

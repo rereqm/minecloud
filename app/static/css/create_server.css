@@ -1,0 +1,104 @@
+main{
+    margin: 0 auto;
+}
+.container {
+    margin-top: 100px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1.07);
+}
+
+.title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #297CC2;
+}
+
+.server_name {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.server_name input {
+    font-size: 18px;
+}
+
+.plan {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+
+.subscriptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.subscription {
+    margin: 0 10px;
+    padding: 30px;
+    border: 1px solid #297CC2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    width: 150px;
+    color: #3188cf;
+}
+
+.subscription:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.subscription.selected {
+    background-color: #297CC2;
+    color: #fff;
+}
+
+.subscription .name {
+    font-family: 'Lilita One';
+    font-style: normal;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.subscription .price {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subscription .features {
+    margin-bottom: 10px;
+}
+
+.subscription .features li {
+    margin-bottom: 5px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #297CC2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #278adb;
+}

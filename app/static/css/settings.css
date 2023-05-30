@@ -1,0 +1,155 @@
+.settings{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+main{
+    background-color: #506a80;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+ 
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: none;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 0%;
+    text-align: center;
+  }
+  
+  .slider:before {
+      content: "✕"; /* крестик */
+      font-size: 30px;
+      background-color: #F62451;
+      line-height: 30px; 
+  }
+    
+  input:checked + .slider:before {
+      content: "\2713";
+      font-size: 30px;
+      background-color: #1fd78d;
+      line-height: 30px;
+    }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+  } 
+.row{
+    display: flex;
+    justify-content: center;
+}
+.column{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-item{
+    min-width: 300px;
+    width: 300px;
+    height: 50px;
+    background-color: #2d3943;
+    margin: 0px 50px 35px 50px;
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    vertical-align: middle;
+    padding: 5px;
+    font-size: 20px;
+}
+.form-item p, .form-item label, .form-item select,input[type="text"]{
+    margin-top: 10px;
+}
+select, input[type="text"]{
+    height: 30px;
+    width: 150px;
+    border: none;
+    background-color: #fff;
+}
+input[type='submit']{
+    background-color: #1fd78d;
+    height: 50px;
+    width: 200px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+}
+.set_version{
+  color: white;
+  margin-top: 100px;
+}
+.set_version h1, .set_version h3, .set_version h2, .set_version p{
+  text-align: center;
+  font-weight: bold;
+}
+.set_version .column{
+  margin-top: 0px;
+  height: 450px;
+  justify-content: start;
+  margin-right: 100px;
+}
+button{
+    cursor: pointer;
+}
+.set_version_btn{
+  background-color: #1fd78d;
+  height: 50px;
+  width: 100px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+}
+.modpack_btn{
+  background-color: #1fd78d;
+  height: 50px;
+  width: 200px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+}
+@media (max-width: 950px) {
+    .row{
+        display: block;
+        margin: 0 auto;
+    }
+    .set_version .column{
+      margin: 0 auto;
+    }
+    .set_version .column .row{
+      display: flex;
+      justify-content: center;
+    }
+  }

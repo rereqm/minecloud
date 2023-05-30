@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{%load static%}
+{% block extra_css %}
+    <link rel="stylesheet" href='{%static "css/create_server.css"%}'>
+{% endblock %}
+
+{% block content %}
+<form action="/api/create_server" method="post">
+    {% csrf_token %}
+    <div class="container poppins">
+
+        <div class="title">Create server</div>
+        <div class="server_name">
+            {{form.name}}
+        </div>
+        <p class="plan">Plan</p>
+        {{form.plan.as_hidden}}
+        <div class="subscriptions">
+            <div class="subscription" id="Free">
+                <div class="name">Free</div>
+                <div class="price">₽0.00 /day</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>512MB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+            <div class="subscription" id="Budget">
+                <div class="name">Budget</div>
+                <div class="price">₽5.00 /day</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>2GB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+            <div class="subscription" id="Boost">
+                <div class="name">Boost</div>
+                <div class="price">₽10.00 /day</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>4GB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+        </div>
+        <input type="submit" class="button subscribe-btn" value="Create">
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js%}
+    <script>
+        function change_value(id, valueToSelect) {
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+            console.log(element.value)
+        }
+
+        const subscriptions = document.querySelectorAll('.subscription');
+        const subscribeBtn = document.querySelector('.subscribe-btn');
+        let selectedSubscription = null;
+
+
+
+        subscriptions.forEach(subscription => {
+            subscription.addEventListener('click', () => {
+                subscriptions.forEach(s => s.classList.remove('selected'));
+                subscription.classList.add('selected');
+                selectedSubscription = subscription.id;
+                change_value('id_plan',selectedSubscription)
+            });
+        });
+    </script>
+{% endblock %}

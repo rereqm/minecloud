@@ -1,0 +1,60 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+  web:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    env_file:
+      - .env
+    environment:
+      - DEBUG=0
+    depends_on:
+      - db
+    command: >
+      bash -c "coverage run manage.py test &&
+             coverage report &&
+             python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             python manage.py shell < create_admin_user.py &&
+             gunicorn -b 0.0.0.0:8000 project.wsgi:application &&
+             env >> /etc/environment "
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker/nginx/
+    container_name: nginx
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - web
+      - servers_controller
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+      - "${NGINX_EXTERNAL_PORT_SSL}:443"
+  servers_controller:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./servers_controller/
+    container_name: servers_controller
+    env_file:
+      - ./servers_controller/.env
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./servers_controller/servers_data:/app/servers_data
+    command: >
+      bash -c "uvicorn server:app --host=0.0.0.0 --port=80"
+volumes:
+  static_volume:
+  media_volume:

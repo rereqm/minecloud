@@ -1,0 +1,43 @@
+main{
+    background-color: #506a80;
+    padding: 50px;
+    color: #fff;
+}
+.payment{
+    background-color: #2d3943;
+    height: 150px;
+    width: 635px;
+}
+.title{
+    display: flex;
+    justify-content: start;
+    margin-left: 10px;
+}
+.calc{
+    display: flex;
+}
+.sign{
+    margin-top: 20px;
+}
+.calc-item{
+    margin-left:10px;
+    margin-right:10px;
+}
+.button-container{
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+}
+button{
+  background-color: #1fd78d;
+  height: 35px;
+  width: 100px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+}
+.remaining{
+  font-size: 13px;
+  margin-left: 10px;
+}

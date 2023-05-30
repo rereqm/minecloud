@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{%load static%}
+{% block extra_css %}
+    <link rel="stylesheet" href='{%static "css/servers.css"%}'>
+{% endblock %}
+
+{% block content %}
+<h1 class="lilita-one">Your servers</h1>
+
+    <div class="create_button">
+        <a href="/create_server">
+        <img src='{% static "img/servers/create.svg" %}'>
+        <p>Create</p>
+        </a>
+    </div>
+
+<div class="content poppins">
+    <div class="column">
+        {% for server in servers%}
+        {% if forloop.counter|add:"2"|divisibleby:3%}
+        <div class="row">
+             {% endif %}
+            <div class="row-item">
+                <h2>{{server.name}}</h2>
+                <p class="plan_text">Plan: {{server.plan}}</p>
+                <div class="flex-container">
+                <a href="/server/{{server.id}}/console">
+                    <div class="button">
+                        <img src='{%static "img/servers/control_panel.svg"%}'>
+                        <p>Control panel</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

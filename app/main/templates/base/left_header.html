@@ -1,0 +1,46 @@
+{% load static %}
+<header class="poppins">
+    <div>
+    <a href="/"><div class="logo">
+        <img src = '{% static "img/base/logo.png" %}' height='45px' width='auto' alt="logo"/>
+        <p>MineCloud</p>
+    </div></a>
+    <nav>
+        <a href="{% url 'console' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/server.svg"%}'>
+            <h2>Server</h2>
+        </div></a>
+        <a href="{% url 'settings' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/options.svg"%}'>
+            <h2>Settings</h2>
+        </div></a>
+        <a href="{% url 'world' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/world.svg" %}'>
+            <h2>World</h2>
+        </div></a>
+        {% if server.plan != "Free" %}
+        <a href="{% url 'payment' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/payment.svg" %}'>
+            <h2>Payment</h2>
+        </div></a>
+        {% endif %}
+        <a href="{% url 'delete' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/delete.svg" %}'>
+            <h2>Delete</h2>
+        </div></a>
+    </nav>
+    </div>
+    <div class="user">
+                <div class='text' style="color:white;">
+                    <p>{{request.user.username}}</p>
+                    <p>{{request.user.money}} ₽</p>
+                    <a style="display:flex;position:relative;left:60px;width:60px;" href="/logout">
+                        <img style='margin-top: -7px;' src='{% static "img/base/logout.svg"%}'>
+                        <div class="logout">Logout</div>
+                    </a>
+                </div>
+                <div>
+                <img height="66px" width="66px" src='/media/{{request.user.logo_image}}'>
+                </div>
+            </div>
+</header>

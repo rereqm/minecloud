@@ -1,0 +1,36 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/world.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="world poppins">
+    <div class="img">
+        <img src='{% static "img/console/world.svg" %}' height="80px" width="80px">
+        <h3>World</h3>
+    </div>
+    <div class="buttons">
+        <a href="#" onclick="delete_world()"><div class="btn delete">Delete</div></a>
+        <a href="https://{{SERVER_IP}}/download/{{server.docker_id}}"><div class="btn download">Download</div></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function delete_world() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/delete_world/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+</script>
+{% endblock %}

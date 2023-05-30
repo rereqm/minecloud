@@ -1,0 +1,73 @@
+main {
+    display: flex;
+}
+
+main > .container {
+    flex: 1;
+    background-color: #9fd5ff;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.error-text {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    left: calc((100vw - 500px) / 2);
+    font-family: "Inter";
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-wrapper {
+    flex: 1;
+    padding: 80px;
+    display: flex;
+    max-width: 400px;
+}
+
+.img-wrapper > img {
+    flex: 1;
+    max-width: 100%;
+    max-height: calc(100vh - 300px);
+    object-fit: contain;
+}
+
+.error-text > h1 {
+    font-weight: 700;
+    font-size: 72px;
+    text-align: center;
+}
+
+.error-text > p {
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.error-text > a > .back-btn {
+    width: 172px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.error-text > a {
+    text-decoration: none;
+}

@@ -1,0 +1,65 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/payment.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="payment poppins">
+    <div class="title">
+        <h3>Payment</h3>
+    </div>
+    <div class="remaining">
+        <p>Remaining days: {{server.remaining_days}}</p>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="calc">
+            <div class="calc-item">
+                <label>One day cost:</label><br>
+                {{form.one_day_cost}}
+            </div>
+            <div class="sign">
+                <p>*</p>
+            </div>
+            <div class="calc-item">
+                <label>Days:</label><br>
+                {{form.days}}
+            </div>
+            <div class="sign">
+                <p>=</p>
+            </div>
+            <div class="calc-item">
+                <label>Total:</label><br>
+                {{form.total}}
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit">Pay</button>
+        </div>
+    </form>
+</div>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li
+        {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    id_total.value = id_one_day_cost.value*id_days.value;
+    id_days.addEventListener('input', (evt) => {
+        id_total.value = id_one_day_cost.value*id_days.value;
+    });
+</script>
+{% endblock %}

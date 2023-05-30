@@ -1,0 +1,112 @@
+.container{
+    color: white;
+    font-weight: bold;
+}
+
+.profile-block{
+    background-color: #2D3943;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    text-align: start;
+}
+
+.profile-button{
+    background-color: #66a9dd;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+.one-line{
+    max-width: 360px;
+    height: 100px;
+}
+
+.two-lines{
+    max-width: 360px;
+    height: 225px;
+}
+.text-center {
+    text-align: center!important;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+.col {
+    flex: 1 0 0%;
+}
+
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+input[type="file" i] {
+    appearance: none;
+    background-color: initial;
+    cursor: default;
+    align-items: baseline;
+    color: inherit;
+    text-overflow: ellipsis;
+    white-space: pre;
+    text-align: start !important;
+    padding: initial;
+    border: initial;
+    overflow: hidden !important;
+}
+@media (max-width: 768px){
+.container{
+    max-width: 720px;
+}
+.row{
+    max-width: 360px;
+}
+}
+main{
+    margin: 0 auto;
+}
+input[type='text'], input[type='password'], input[type='email']{
+    height: 15px;
+    width: 320px;
+}
+input[type='submit']{
+    height: 30px;
+    cursor: pointer;
+}
+.btn-box{
+    display: flex;
+    justify-content: center;
+}
+.success{
+    color: #1DC682;
+}
+ul {
+    list-style-type: none;
+}
+.error{
+    color: red;
+}
+.payment{
+    margin-left: -7px;
+    padding: 0px;
+    max-width: 350px;
+    background-color: #2D3943;
+    color: white;
+    text-align: start;
+}
+input[type='number']{
+    height: 15px;
+    width: 100px;
+}

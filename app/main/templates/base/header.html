@@ -1,0 +1,52 @@
+{% load static %}
+<header>
+    <nav>
+        <a href="/"><div class="logo">
+            <img id="logo_img" src = '{% static "img/base/logo.png" %}' height='80px' width='auto' alt="logo"/>
+            <p>MineCloud</p>
+        </div></a>
+        {% if user.is_authenticated %}
+        <div class="menu-auth">
+            <a href="/#plans">Plans</a>
+            <a href="/#features">Features</a>
+            <a href="/create_server">Create server</a>
+        </div>
+        {% else%}
+        <div class="menu">
+            <a href="/#plans">Plans</a>
+            <a href="/#features">Features</a>
+            <a href="/create_server">Create server</a>
+        </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <div class="profile poppins">
+            <a href="{% url 'servers' %}"><div class="servers">
+                <img src='{% static "img/base/server.svg"%}'>
+                <p>Your servers</p>
+            </div></a>
+            <a href="{% url 'profile' %}"><div class="settings">
+                <img src='{% static "img/base/user_settings.svg"%}'>
+                <p>Settings</p>
+            </div></a>
+            <div class="user">
+                <div style="margin-right: 5px; margin-top: 2px;">
+                    <p>{{request.user.username}}</p>
+                    <p id="money" class="money">{{request.user.money}} ₽</p>
+                    <a style='display: flex; justify-content: end;margin-right: 0px;'href="/logout">
+                        <img id="logout_img" class="logout_img" src='{% static "img/base/logout.svg"%}'>
+                        <p id="logout" class="logout">Logout</p>
+                    </a>
+                </div>
+                <div>
+                <img height="50px" width="50px" src='/media/{{request.user.logo_image}}'>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="auth">
+            <a href="/login">Sign in</a>
+            <a href="/registration">Sign up</a>
+        </div>
+        {% endif %}
+    </nav>
+</header>
